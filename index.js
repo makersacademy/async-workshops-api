@@ -10,19 +10,28 @@ function allowCrossDomain(req, res, next) {
 };
 
 // pulls out basic information to send when listing users
-function basicInformation(people) {
-  return people.map(function(person, i) {
-    return { id: i, name: person.name };
+function peopleBasicInformation(people) {
+  return people.map(function(person) {
+    return { id: person.id, name: person.name };
   });
+};
+
+// gets person who has passed id
+function getPersonWithId(people, id) {
+  for (var i = 0; i < people.length; i++) {
+    if (people[i].id === id) {
+      return people[i];
+    }
+  }
 };
 
 // data
 
 var people = [
-  { name: "Mary", favouriteMusic: "Sunset Rubdown" },
-  { name: "Lauren", favouriteMusic: "Texas folk" },
-  { name: "Isla", favouriteMusic: "Frozen soundtrack" },
-  { name: "Sam", favouriteMusic: "We Will Rock You by Queen" },
+  { id: 0, name: "Mary", favouriteMusic: "Sunset Rubdown" },
+  { id: 1, name: "Lauren", favouriteMusic: "Texas folk" },
+  { id: 2, name: "Isla", favouriteMusic: "Frozen soundtrack" },
+  { id: 3, name: "Sam", favouriteMusic: "We Will Rock You by Queen" },
 ];
 
 // create app
@@ -36,12 +45,12 @@ app.use(allowCrossDomain);
 // routes
 
 app.get('/people', function(request, response) {
-  response.json({ people: basicInformation(people) });
+  response.json({ people: peopleBasicInformation(people) });
 });
 
 app.get('/person/:id', function(request, response) {
-  var id = request.params.id;
-  response.json({ person: people[id] });
+  var id = parseInt(request.params.id);
+  response.json({ person: getPersonWithId(people, id) });
 });
 
 // start app
