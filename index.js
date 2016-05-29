@@ -1,23 +1,22 @@
 var express = require('express');
 
+// middleware to allow cross domain requests
 function allowCrossDomain(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-
-  // intercept OPTIONS method
-  if ('OPTIONS' === req.method) {
-    res.send(200);
-  } else {
-    next();
-  }
+  res.header('Access-Control-Allow-Headers',
+             'Content-Type, Authorization, Content-Length, X-Requested-With');
+  next();
 };
 
+// pulls out basic information to send when listing users
 function basicInformation(people) {
   return people.map(function(person, i) {
     return { id: i, name: person.name };
   });
 };
+
+// data
 
 var people = [
   { name: "Mary", favouriteMusic: "Sunset Rubdown" },
