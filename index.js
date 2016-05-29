@@ -48,7 +48,7 @@ app.get('/people', function(request, response) {
   response.json({ people: peopleBasicInformation(people) });
 });
 
-app.get('/person/:id', function(request, response) {
+app.get('/people/:id', function(request, response) {
   var id = parseInt(request.params.id);
   response.json({ person: getPersonWithId(people, id) });
 });
