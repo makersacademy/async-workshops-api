@@ -45,12 +45,12 @@ app.use(allowCrossDomain);
 // routes
 
 app.get('/people', function(request, response) {
-  response.json({ people: peopleBasicInformation(people) });
+  response.json(peopleBasicInformation(people));
 });
 
 app.get('/people/:id', function(request, response) {
   var id = parseInt(request.params.id);
-  response.json({ person: getPersonWithId(people, id) });
+  response.json(getPersonWithId(people, id));
 });
 
 // start app
