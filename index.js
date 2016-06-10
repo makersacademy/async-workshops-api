@@ -28,10 +28,10 @@ function getPersonWithId(people, id) {
 // data
 
 var people = [
-  { id: 0, name: "Mary", favouriteMusic: "Sunset Rubdown" },
-  { id: 1, name: "Lauren", favouriteMusic: "Texas folk" },
-  { id: 2, name: "Isla", favouriteMusic: "Frozen soundtrack" },
-  { id: 3, name: "Sam", favouriteMusic: "We Will Rock You by Queen" },
+  { id: 0, name: "Mary", favouriteMusic: "Sunset Rubdown", musicalKindredSpirit: 1 },
+  { id: 1, name: "Lauren", favouriteMusic: "Texas folk", musicalKindredSpirit: 2 },
+  { id: 2, name: "Isla", favouriteMusic: "Frozen soundtrack", musicalKindredSpirit: 2 },
+  { id: 3, name: "Sam", favouriteMusic: "We Will Rock You by Queen" }
 ];
 
 // create app
